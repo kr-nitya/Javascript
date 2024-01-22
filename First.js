@@ -366,11 +366,98 @@ console.log("Random Number 0 to 10 = ", Math.floor(Math.random() * 11));
 console.log("Random Number = ", Math.floor(Math.random() * 10) + 1);
 
 // Case 	    Value 	Reason
-// 2 < 12 	    true    
+// 2 < 12 	    true
 // 2 < "12" 	true    String converted in number
-// 2 < "John" 	false   
+// 2 < "John" 	false
 // 2 > "John" 	false
 // 2 == "John"  false
 // "2" < "12" 	false   In term of String compare first character
 // "2" > "12" 	true    In term of String compare first character
 // "2" == "12"  false
+
+// For in loop for objects
+console.log("----------Loops------------");
+const person1 = { fname: "John", lname: "Doe", age: 25 };
+console.log("For In loop");
+for (let x in person1) {
+  console.log(person1[x]); //here x return index
+}
+//For of loop It lets you loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more
+const cars = ["BMW", "Volvo", "Mini"];
+
+console.log("For of loop");
+for (let x of cars) {
+  console.log(x); //here x return value
+}
+
+//Set data structure only unique values
+// Create a Set
+const letters = new Set();
+
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+console.log("Set");
+for (x of letters) {
+  console.log(x);
+}
+
+//Map = key value pair
+
+const fruits1 = new Map();
+
+fruits1.set("apples", 500);
+fruits1.set("bananas", 300);
+fruits1.set("oranges", 200);
+
+//Using forEach - use this for indivisual key val pair
+fruits1.forEach(function (key, val) {
+  console.log("Key : ", key, " Value", val);
+});
+
+//Using for of - use this for get Array as output
+console.log("Using for of");
+
+for (const x of fruits1.entries()) {
+  console.log(x);
+}
+let newtext = "Hello How are you?";
+let res = newtext.search("are");
+console.log("Search=",res);
+res=newtext.replace("Hello","Hi");
+console.log("Replace=",res);
+//Eval Function
+
+let x1 = 10;
+let y1= 20000;
+let code = 'console.log(x1 + y1);';
+console.log("Eval = ")
+eval(code); 
+
+
+console.log("-------------------Error Handling--------------------------");
+// let in1 = prompt("Enter Number Between 1 to 5");
+// if(in1>5)
+// {
+//     throw "Enter valid Number less than 5";
+// }
+// else{
+//     console.log("Good");
+// }
+
+let x3 = 5;
+try {
+    console.log("inside try");
+  x3 = y4 + 1;   // y cannot be used (referenced)
+}
+catch(err) {
+  console.log(err);
+  
+}
+//JavaScript Hoisting = moving declarations to the top that's why we can access variable before declare
+hoisting = 123;
+console.log(hoisting);
+var hoisting;
+
+//Hoisting did not work with const and let
