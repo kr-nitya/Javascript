@@ -129,18 +129,18 @@ console.log("x.toFixed(4) = ", x.toFixed(4));
 // toPrecision() returns a string, with a number written with a specified length
 console.log("x.toPrecision(0) = ", x.toPrecision(3));
 console.log("x.toPrecision(4) = ", x.toPrecision(4));
-console.log("(123).valueOf() = ",(123).valueOf());
+console.log("(123).valueOf() = ", (123).valueOf());
 
-console.log("Number(true) =", Number(true));        
-console.log("Number(false) =", Number(false));      
-console.log("Number('10') =", Number("10"));        
-console.log("Number('  10') =", Number("  10"));    
-console.log("Number('10  ') =", Number("10  "));    
-console.log("Number(' 10  ') =", Number(" 10  "));  
-console.log("Number('10.33') =", Number("10.33"));  
-console.log("Number('10,33') =", Number("10,33"));  
-console.log("Number('10 33') =", Number("10 33"));  
-console.log("Number('John') =", Number("John"));    
+console.log("Number(true) =", Number(true));
+console.log("Number(false) =", Number(false));
+console.log("Number('10') =", Number("10"));
+console.log("Number('  10') =", Number("  10"));
+console.log("Number('10  ') =", Number("10  "));
+console.log("Number(' 10  ') =", Number(" 10  "));
+console.log("Number('10.33') =", Number("10.33"));
+console.log("Number('10,33') =", Number("10,33"));
+console.log("Number('10 33') =", Number("10 33"));
+console.log("Number('John') =", Number("John"));
 
 console.log("parseInt('-10') =", parseInt("-10"));
 console.log("parseInt('-10.33') =", parseInt("-10.33"));
@@ -159,15 +159,133 @@ console.log("parseFloat('years 10') =", parseFloat("years 10"));
 //Arrays
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 console.log(fruits);
-console.log("Length of the array : ",fruits.length);
+console.log("Length of the array : ", fruits.length);
 for (let i = 0; i < fruits.length; i++) {
-    console.log(fruits[i]);
+  console.log(fruits[i]);
 }
-fruits[fruits.length] = "Lemon"; 
+fruits[fruits.length] = "Lemon";
 //Iterate array using forEach()
 console.log("Iterate array using forEach()");
 fruits.forEach(myFunction);
 function myFunction(value) {
-    console.log(value);
-  } 
+  console.log(value);
+}
+console.log("Fruit instanceof array : ", fruits instanceof Array);
+console.log("fruits.toString() = ", fruits.toString());
+console.log("fruits.at(2) : ", fruits.at(2));
+//The join() method also joins all array elements into a string.
 
+//It behaves just like toString(), but in addition you can specify the separator:
+
+console.log("fruits.join('*') : ", fruits.join(" * "));
+let popele = fruits.pop();
+console.log("Pop element = ", popele);
+fruits.push("Kiwi");
+console.log("Push new element", fruits);
+//The shift() method removes the first array element and "shifts" all other elements to a lower index.
+let shiftelement = fruits.shift();
+console.log("After Shifing = ", shiftelement);
+//The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+fruits.unshift("Lemon");
+console.log("Aftter Unshifing = ", fruits);
+console.log("");
+//Flat reducing the dimensionality
+const myArr = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+const newArr = myArr.flat();
+console.log(myArr);
+console.log(newArr);
+//Splice
+console.log(
+  "fruits.splice(2, 0, 'Lemon', 'Kiwi') = ",
+  fruits.splice(2, 0, "Lemon", "Kiwi"),
+  fruits
+);
+/*The first parameter (2) defines the position where new elements should be added (spliced in).
+The second parameter (0) defines how many elements should be removed.
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+The splice() method returns an array with the deleted items: 
+*/
+console.log(
+  "fruits.splice(2, 2, 'Lemon', 'Kiwi) = ",
+  fruits.splice(2, 2, "Lemon", "Kiwi")
+);
+let sliceEle = fruits.slice(1);
+console.log(fruits);
+console.log("fruits.slice(1) = " + sliceEle);
+
+console.log("fruits.indexOf('Apple') = ", fruits.indexOf("Apple"));
+console.log("fruits.includes('Mango') = ", fruits.includes("Mango"));
+const numbers = [4, 9, 16, 25, 29];
+let first = numbers.find(myFunction);
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log(numbers);
+console.log("First number over 18 is " + first);
+console.log("First number over 18 has index " + numbers.findIndex(myFunction));
+
+//Sorting
+console.log(fruits);
+console.log(fruits.sort());
+console.log(fruits.reverse());
+
+//Array Iteration
+console.log("Using forEach");
+const numbers1 = [45, 4, 9, 16, 25];
+numbers1.forEach(myFun);
+function myFun(value) {
+  console.log(value);
+}
+console.log("Using Map");
+const numbers12 = [45, 4, 9, 16, 25];
+const numbers2 = numbers12.map(myFunction);
+
+function myFunction(value) {
+  console.log(value);
+}
+//Filter Method
+const age = [45, 4, 9, 16, 25];
+const over18 = numbers.filter(myFunction);
+console.log(over18);
+function myFunction(value) {
+  return value > 18;
+}
+
+//Reduce
+let sum = numbers.reduce(myFunction);
+console.log("Reduce = ", sum);
+function myFunction(total, value, index, array) {
+  return total + value;
+}
+//The every() method checks if all array values pass a test.
+let allOver18 = numbers.every(myFunction);
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log("Every = ", allOver18);
+//The some() method checks if some array values pass a test.
+let someOver18 = numbers.some(myFunction);
+console.log("Some = ", someOver18);
+function myFunction(value, index, array) {
+  return value > 18;
+}
+//From
+const arrFrom = Array.from("ABC5355DEFG");
+console.log("Array.from('ABC5355DEFG') = ",Array.from("ABC5355DEFG"));
+//With
+const months = ["Januar", "Februar", "Mar", "April"];
+const myMonths = months.with(2, "March");
+console.log(months);
+console.log("months.with(2, 'March') = ",months.with(2, "March"));
+
+const q1 = ["Jan", "Feb", "Mar"];
+const q2 = ["Apr", "May", "Jun"];
+const q3 = ["Jul", "Aug", "Sep"];
+const q4 = ["Oct", "Nov", "May"];
+
+const year = [...q1, ...q2, ...q3, ...q4];
+console.log(year);
