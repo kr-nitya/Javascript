@@ -275,12 +275,12 @@ function myFunction(value, index, array) {
 }
 //From
 const arrFrom = Array.from("ABC5355DEFG");
-console.log("Array.from('ABC5355DEFG') = ",Array.from("ABC5355DEFG"));
+console.log("Array.from('ABC5355DEFG') = ", Array.from("ABC5355DEFG"));
 //With
 const months = ["Januar", "Februar", "Mar", "April"];
 const myMonths = months.with(2, "March");
 console.log(months);
-console.log("months.with(2, 'March') = ",months.with(2, "March"));
+console.log("months.with(2, 'March') = ", months.with(2, "March"));
 
 const q1 = ["Jan", "Feb", "Mar"];
 const q2 = ["Apr", "May", "Jun"];
@@ -289,3 +289,88 @@ const q4 = ["Oct", "Nov", "May"];
 
 const year = [...q1, ...q2, ...q3, ...q4];
 console.log(year);
+console.log(
+  "------------------------------Date-----------------------------------"
+);
+//Dates
+const d = new Date();
+console.log("Date : ", d);
+const birthDay = new Date(2003, 3, 23, 4, 32, 0);
+console.log("BirthDay : ", birthDay);
+console.log("d.toDateString() : ", d.toDateString());
+
+// Creating a new Date object (current date and time)
+const currentDate = new Date();
+console.log("Current Date:", currentDate);
+
+// Getting date components
+const year1 = currentDate.getFullYear();
+const month = currentDate.getMonth();
+const day = currentDate.getDate();
+const dayOfWeek = currentDate.getDay();
+
+console.log("Year:", year1);
+console.log("Month:", month);
+console.log("Day of the Month:", day);
+console.log("Day of the Week:", dayOfWeek);
+
+// Setting date components
+currentDate.setFullYear(2025);
+currentDate.setMonth(6); // July (0-based index)
+currentDate.setDate(15);
+currentDate.setHours(12, 30, 0);
+
+console.log("Updated Date:", currentDate);
+console.log("Updated Year:", currentDate.getFullYear());
+console.log("Updated Month:", currentDate.getMonth());
+console.log("Updated Day of the Month:", currentDate.getDate());
+console.log("Updated Hour:", currentDate.getHours());
+console.log("Updated Minutes:", currentDate.getMinutes());
+console.log(
+  "-----------------------------------------------Maths---------------------------------------"
+);
+// Math operations on a single variable
+
+let number = -5.5;
+
+// Constants
+console.log("PI:", Math.PI);
+console.log("Euler's number (e):", Math.E);
+
+console.log("Number:", number);
+console.log("Absolute value:", Math.abs(number));
+console.log("Ceiling (round up):", Math.ceil(number));
+console.log("Floor (round down):", Math.floor(number));
+console.log("Rounded value:", Math.round(number));
+
+// Exponents and logarithms
+console.log("Power (2^3):", Math.pow(2, 3));
+console.log("Square root:", Math.sqrt(Math.abs(number))); // Ensure a non-negative value for sqrt
+console.log("Natural logarithm:", Math.log(Math.E)); // ln(e) = 1
+
+// Trigonometric functions (angles in radians)
+console.log("Sine of 90 degrees:", Math.sin(Math.PI / 2));
+console.log("Cosine of 0 degrees:", Math.cos(0));
+console.log("Tangent of 45 degrees:", Math.tan(Math.PI / 4));
+
+// Finding the maximum and minimum of a set of values
+console.log("Maximum of 5, 10, and 3:", Math.max(5, 10, 3));
+console.log("Minimum of 5, 10, and 3:", Math.min(5, 10, 3));
+
+console.log(
+  "------------------------------Random Number------------------------------------"
+);
+// Returns a random integer from 0 to 10:
+console.log("Random Number 0 to 10 = ", Math.floor(Math.random() * 11));
+// Returns a random integer from 1 to 10
+console.log("Random Number = ", Math.floor(Math.random() * 10) + 1);
+
+// Case 	    Value 	Reason
+// 2 < 12 	    true    
+// 2 < "12" 	true    String converted in number
+// 2 < "John" 	false   
+// 2 > "John" 	false
+// 2 == "John"  false
+// "2" < "12" 	false   In term of String compare first character
+// "2" > "12" 	true    In term of String compare first character
+// "2" == "12"  false
