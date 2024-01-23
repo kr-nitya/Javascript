@@ -1,3 +1,4 @@
+
 //All basic concepts
 console.log("Hello World");
 
@@ -424,17 +425,16 @@ for (const x of fruits1.entries()) {
 }
 let newtext = "Hello How are you?";
 let res = newtext.search("are");
-console.log("Search=",res);
-res=newtext.replace("Hello","Hi");
-console.log("Replace=",res);
+console.log("Search=", res);
+res = newtext.replace("Hello", "Hi");
+console.log("Replace=", res);
 //Eval Function
 
 let x1 = 10;
-let y1= 20000;
-let code = 'console.log(x1 + y1);';
-console.log("Eval = ")
-eval(code); 
-
+let y1 = 20000;
+let code = "console.log(x1 + y1);";
+console.log("Eval = ");
+eval(code);
 
 console.log("-------------------Error Handling--------------------------");
 // let in1 = prompt("Enter Number Between 1 to 5");
@@ -448,12 +448,10 @@ console.log("-------------------Error Handling--------------------------");
 
 let x3 = 5;
 try {
-    console.log("inside try");
-  x3 = y4 + 1;   // y cannot be used (referenced)
-}
-catch(err) {
+  console.log("inside try");
+  x3 = y4 + 1; // y cannot be used (referenced)
+} catch (err) {
   console.log(err);
-  
 }
 //JavaScript Hoisting = moving declarations to the top that's why we can access variable before declare
 hoisting = 123;
@@ -461,3 +459,82 @@ console.log(hoisting);
 var hoisting;
 
 //Hoisting did not work with const and let
+//This keyword
+console.log("-------------------------Use of this----------------------------");
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
+};
+console.log("Perspn details:", person2.fullName());
+console.log("Print this = ", this);
+("use strict");
+console.log("After strict this = ", this);
+
+//Use of call
+const pr = {
+  fullName: function (city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  },
+};
+
+const pr1 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+console.log("Use of call = ", pr.fullName.call(pr1, "Oslo", "Norway"));
+//Use of apply
+
+const pr2 = {
+  fullName: function (city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  },
+};
+const pr3 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+console.log("Use of apply = ", pr2.fullName.apply(pr3, ["Oslo", "Norway"]));
+
+// The difference is:
+
+// The call() method takes arguments separately.
+
+// The apply() method takes arguments as an array.
+
+//Arrow Function
+console.log("------------Arrow Function-----------------");
+let hello = () => {
+  return "Hello";
+};
+console.log(hello());
+let arrExample = (a,b)=>{
+  console.log("Sum = ",a+b);
+}
+arrExample(12,43);
+console.log("-----------------Classes------------------");
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    const date = new Date();
+    return date.getFullYear() - this.year;
+  }
+}
+const myCar = new Car("Ford", 2014);
+console.log(myCar," Age = ",myCar.age());
+console.log("------------JSON-------------");
+let jsonData = {
+  "firstName":"Nitya",
+  "lastName":"Makwana"
+}
+console.log("JSON = ",jsonData);
+let jsonString = JSON.stringify(jsonData);
+console.log("JSON String = ",jsonString);
+
