@@ -1,4 +1,3 @@
-
 //All basic concepts
 console.log("Hello World");
 
@@ -521,10 +520,10 @@ let hello = () => {
   return "Hello";
 };
 console.log(hello());
-let arrExample = (a,b)=>{
-  console.log("Sum = ",a+b);
-}
-arrExample(12,43);
+let arrExample = (a, b) => {
+  console.log("Sum = ", a + b);
+};
+arrExample(12, 43);
 console.log("-----------------Classes------------------");
 class Car {
   constructor(name, year) {
@@ -537,17 +536,17 @@ class Car {
   }
 }
 const myCar = new Car("Ford", 2014);
-console.log(myCar," Age = ",myCar.age());
+console.log(myCar, " Age = ", myCar.age());
 console.log("------------JSON-------------");
 let jsonData = {
-  "firstName":"Nitya",
-  "lastName":"Makwana"
-}
-console.log("JSON = ",jsonData);
+  firstName: "Nitya",
+  lastName: "Makwana",
+};
+console.log("JSON = ", jsonData);
 let jsonString = JSON.stringify(jsonData);
-console.log("JSON String = ",jsonString);
-var obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}'); 
-console.log("JSON Parse = ",obj);
+console.log("JSON String = ", jsonString);
+var obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+console.log("JSON Parse = ", obj);
 
 // //Objects
 // Objects are mutable
@@ -558,36 +557,35 @@ console.log("JSON Parse = ",obj);
 // }
 
 // const x = person;
-// x.age = 10;      // Will change both x.age and person.age 
+// x.age = 10;      // Will change both x.age and person.age
 myObj = {
-  name:"John",
-  age:30,
+  name: "John",
+  age: 30,
   cars: {
-    car1:"Ford",
-    car2:"BMW",
-    car3:"Fiat"
-  }
-}
-console.log("Nested Objects = ",myObj.cars.car2);
+    car1: "Ford",
+    car2: "BMW",
+    car3: "Fiat",
+  },
+};
+console.log("Nested Objects = ", myObj.cars.car2);
 //or
-console.log("Nested Objects  = ",myObj.cars["car2"]);
+console.log("Nested Objects  = ", myObj.cars["car2"]);
 //Display Object
 //1.Using Property
 const display = {
   name: "Nitya",
   age: 21,
-  city: "New York"
+  city: "New York",
 };
 console.log(display.name + "," + display.age + "," + display.city);
 //2.Using loop
-for(x in display){
+for (x in display) {
   console.log(display[x]);
-  
 }
 //3.Using Object.values()
 console.log(Object.values(display));
 //4.Using JSON.stringify()
-let myString = JSON.stringify(person); 
+let myString = JSON.stringify(person);
 console.log(myString);
 //Getter and Setter
 const display1 = {
@@ -602,9 +600,116 @@ const display1 = {
   },
   get fullName() {
     return this.firstName + " " + this.lastName;
-  }
+  },
 };
 display1.lang = "Gujarati";
-console.log("Language = ",display1.lang);
+console.log("Language = ", display1.lang);
 console.log(display1.fullName);
 
+//Build in constructor for Function
+const myFunction1 = new Function("a", "b", "return a * b");
+
+let x4 = myFunction1(4, 3);
+console.log("Function using built in constructor = ", x4);
+
+function sum1(...args) {
+  let sum = 0;
+  for (let arg of args) sum += arg;
+  return sum;
+}
+let ans = sum1(4, 9, 16, 25, 29, 100, 66, 77);
+console.log("Using ... =", ans);
+//Accessing Parameter value using Argument object
+function findMax() {
+  let max = -Infinity;
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > max) {
+      max = arguments[i];
+    }
+  }
+  return max;
+}
+console.log("Use of argument object = ", findMax(1, 34, 4543, 535345, 7));
+
+//Use of bind
+const originalFunction = function () {
+  console.log(this.name);
+};
+
+const detail = { name: "John" };
+
+// Using bind to create a customized function
+const customizedFunction = originalFunction.bind(detail);
+
+// Calling the customized function
+customizedFunction(); // Outputs: John
+//Async
+//callback
+function myDisplayer(some) {
+  console.log(some);
+}
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+myCalculator(5, 5, myDisplayer);
+//setTimeout
+setTimeout(function () {
+  myFunction("Hello");
+}, 3000);
+
+function myFunction(value) {
+  console.log("Using Async = ", value);
+}
+console.log("Before");
+//setinterval
+let count = 0;
+
+const intervalId = setInterval(function () {
+  console.log("Interval: ", count);
+  count++;
+
+  if (count === 5) {
+    clearInterval(intervalId); // Stop the interval after 5 iterations
+  }
+}, 1000);
+
+//ID of the settimeout
+let timeOutId = setTimeout(function () {
+  myFunction("Hello");
+}, 3000);
+console.log("Settimeout ID : ", timeOutId);
+
+//Promise
+function myDisplayer(some) {
+  console.log(some);
+}
+
+let myPromise = new Promise(function (myResolve, myReject) {
+  let x = 0;
+  if (x == 0) {
+    myResolve("Sucess");
+  } else {
+    myReject("Error");
+  }
+});
+
+myPromise.then(
+  function (value) {
+    myDisplayer(value);
+  },
+  function (error) {
+    myDisplayer(error);
+  }
+);
+
+//async await
+
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve) {
+    setTimeout(function() {resolve("Helllo!!");}, 3000);
+  });
+ console.log(await myPromise);
+ 
+}
+myDisplay();
