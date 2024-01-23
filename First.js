@@ -235,6 +235,15 @@ console.log(fruits.sort());
 console.log(fruits.reverse());
 
 //Array Iteration
+// forEach:
+// Purpose: Iterates over each element in the array and performs a specified operation on each element.
+// Return Value: undefined. It does not create a new array but is used for performing side effects on each element.
+// map:
+// Purpose: Creates a new array by applying a specified function to each element in the original array.
+// Return Value: A new array with the same length as the original, containing the results of applying the provided function to each element.
+// filter:
+// Purpose: Creates a new array containing only the elements that pass a specified condition.
+// Return Value: A new array containing the elements that meet the specified condition.
 console.log("Using forEach");
 const numbers1 = [45, 4, 9, 16, 25];
 numbers1.forEach(myFun);
@@ -537,4 +546,65 @@ let jsonData = {
 console.log("JSON = ",jsonData);
 let jsonString = JSON.stringify(jsonData);
 console.log("JSON String = ",jsonString);
+var obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}'); 
+console.log("JSON Parse = ",obj);
+
+// //Objects
+// Objects are mutable
+// const person = {
+//   firstName:"John",
+//   lastName:"Doe",
+//   age:50, eyeColor:"blue"
+// }
+
+// const x = person;
+// x.age = 10;      // Will change both x.age and person.age 
+myObj = {
+  name:"John",
+  age:30,
+  cars: {
+    car1:"Ford",
+    car2:"BMW",
+    car3:"Fiat"
+  }
+}
+console.log("Nested Objects = ",myObj.cars.car2);
+//or
+console.log("Nested Objects  = ",myObj.cars["car2"]);
+//Display Object
+//1.Using Property
+const display = {
+  name: "Nitya",
+  age: 21,
+  city: "New York"
+};
+console.log(display.name + "," + display.age + "," + display.city);
+//2.Using loop
+for(x in display){
+  console.log(display[x]);
+  
+}
+//3.Using Object.values()
+console.log(Object.values(display));
+//4.Using JSON.stringify()
+let myString = JSON.stringify(person); 
+console.log(myString);
+//Getter and Setter
+const display1 = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  set lang(lang) {
+    this.language = lang;
+  },
+  get lang() {
+    return this.language;
+  },
+  get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+display1.lang = "Gujarati";
+console.log("Language = ",display1.lang);
+console.log(display1.fullName);
 
